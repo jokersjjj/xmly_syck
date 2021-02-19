@@ -58,7 +58,7 @@ if "XMLY_SPEED_COOKIE" in os.environ:
 # 可选项
 # 自定义设备命名,非必须 ;devices=["iPhone7P","huawei"];与cookiesList对应
 devices = []
-notify_time = 21                            # 通知时间,24小时制,默认19
+notify_time = 22                            # 通知时间,24小时制,默认19
 XMLY_ACCUMULATE_TIME = 1                    # 希望刷时长的,此处置1,默认打开;关闭置0
 UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iting/1.0.12 kdtunion_iting/1.0 iting(main)/1.0.12/ios_1"
 # 非iOS设备的需要的自行修改,自己抓包 与cookie形式类似
@@ -1008,6 +1008,20 @@ def serverJ(title, content):
     print(response.text)
 
 
+def push_plus_token(title, content):
+    print("\n")
+    token = PUSH_PLUS_TOKEN
+    if "PUSH_PLUS_TOKEN" in os.environ:
+        token = os.environ["PUSH_PLUS_TOKEN"]
+    if not token:
+        print("PUSH+服务的token未设置!!\n取消推送")
+        return
+    print("PUSH+服务启动")
+    response = requests.get(
+        f"""http://pushplus.hxtrip.com/send?token={token}&title={title}&content={content}""")
+    print(response.text)
+
+
 def bark(title, content):
     print("\n")
     bark_token = BARK
@@ -1086,7 +1100,7 @@ def run():
         bark("⏰ 喜马拉雅极速版", message)
         serverJ("⏰ 喜马拉雅极速版", message)
         telegram_bot("⏰ 喜马拉雅极速版", message)
-
+        push_plus_token("⏰ 喜马拉雅极速版", message)
 
 if __name__ == "__main__":
     run()
