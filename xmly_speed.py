@@ -53,6 +53,7 @@ if "XMLY_SPEED_COOKIE" in os.environ:
         print("Telegram 推送打开")
     if "PUSH_PLUS_TOKEN" in os.environ and os.environ["PUSH_PLUS_TOKEN"]:
         PUSH_PLUS_TOKEN = os.environ["PUSH_PLUS_TOKEN"]
+        print("push+ 推送打开")
 
 ###################################################
 # 可选项
