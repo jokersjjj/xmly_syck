@@ -25,6 +25,7 @@ BARK = ''                   # bark服务,自行搜索; secrets可填;形如jfjqx
 SCKEY = ''                  # Server酱的SCKEY; secrets可填
 TG_BOT_TOKEN = ''           # telegram bot token 自行申请
 TG_USER_ID = ''             # telegram 用户ID
+PUSH_PLUS_TOKEN = ''        # PUSH_PLUS 用户TOKEN
 
 ###################################################
 # 对应方案1:  GitHub action自动运行,此处无需填写;
@@ -44,19 +45,20 @@ if "XMLY_SPEED_COOKIE" in os.environ:
         BARK = os.environ["BARK"]
         print("BARK 推送打开")
     if "SCKEY" in os.environ and os.environ["SCKEY"]:
-        BARK = os.environ["SCKEY"]
+        SCKEY = os.environ["SCKEY"]
         print("serverJ 推送打开")
     if "TG_BOT_TOKEN" in os.environ and os.environ["TG_BOT_TOKEN"] and "TG_USER_ID" in os.environ and os.environ["TG_USER_ID"]:
         TG_BOT_TOKEN = os.environ["TG_BOT_TOKEN"]
         TG_USER_ID = os.environ["TG_USER_ID"]
         print("Telegram 推送打开")
-
+    if "PUSH_PLUS_TOKEN" in os.environ and os.environ["PUSH_PLUS_TOKEN"]:
+        PUSH_PLUS_TOKEN = os.environ["PUSH_PLUS_TOKEN"]
 
 ###################################################
 # 可选项
 # 自定义设备命名,非必须 ;devices=["iPhone7P","huawei"];与cookiesList对应
 devices = []
-notify_time = 19                            # 通知时间,24小时制,默认19
+notify_time = 21                            # 通知时间,24小时制,默认19
 XMLY_ACCUMULATE_TIME = 1                    # 希望刷时长的,此处置1,默认打开;关闭置0
 UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iting/1.0.12 kdtunion_iting/1.0 iting(main)/1.0.12/ios_1"
 # 非iOS设备的需要的自行修改,自己抓包 与cookie形式类似
