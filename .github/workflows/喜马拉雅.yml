@@ -29,4 +29,6 @@ jobs:
             SCKEY: ${{ secrets.SCKEY }}   # server酱服务
             TG_BOT_TOKEN: ${{secrets.TG_BOT_TOKEN}} # tg通知token
             TG_USER_ID:  ${{secrets.TG_USER_ID}}    # tg通知id
+            PUSH_PLUS_TOKEN:  ${{secrets.PUSH_PLUS_TOKEN}}    # push+通知token
+            
     
