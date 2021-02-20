@@ -59,7 +59,7 @@ if "XMLY_SPEED_COOKIE" in os.environ:
 # 可选项
 # 自定义设备命名,非必须 ;devices=["iPhone7P","huawei"];与cookiesList对应
 devices = []
-notify_time = 11                            # 通知时间,24小时制,默认19
+notify_time = 19                            # 通知时间,24小时制,默认19
 XMLY_ACCUMULATE_TIME = 1                    # 希望刷时长的,此处置1,默认打开;关闭置0
 UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 iting/1.0.12 kdtunion_iting/1.0 iting(main)/1.0.12/ios_1"
 # 非iOS设备的需要的自行修改,自己抓包 与cookie形式类似
@@ -1024,7 +1024,8 @@ def push_plus_token(title, content):
     data = {
         "token": token,
         "title": title,
-        "content": content.replace("\n", "\n\n")+"\n\n [打赏作者](https://github.com/Zero-S1/xmly_speed/blob/master/thanks.md)"
+        "content": content,
+        "template": json
     }
     response = requests.post(f"http://pushplus.hxtrip.com/send/", data=data)
     print(response.text)
